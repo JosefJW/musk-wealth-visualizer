@@ -19,3 +19,12 @@ body {
     border-radius: 5px;
   }
   
+  .time {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    font-size: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+  }

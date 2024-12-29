@@ -3,7 +3,11 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const blockSize = 5;
+let startTime = new Date();
+let curTime = new Date();
+let elapsedTime = 0;
+
+const blockSize = 2;
 const blocks = [];
 const collisionBlocks = [];
 let total = 0;
@@ -16,6 +20,7 @@ fetch('/get_wealth_data')
   .then(data => {
     totalWealth = data.total_wealth;
     unitSalary = data.unit_salary;
+    blockSize = ((canvas.width-10) * (canvas.height-10)) / (totalWealth/unitSalary)
   });
 
 class Block {
@@ -125,8 +130,14 @@ class Block {
 
 function updateCounter() {
     total += unitSalary;
+    curTime = new Date();
+    elapsedTime = curTime - startTime;
+    elapsedTimeSeconds = Math.floor(elapsedTime/1000);
+    elapsedTimeSeconds = elapsedTimeSeconds % 60;
+    elapsedTimeMinutes = Math.floor(elapsedTime/60000);
     document.getElementById('counter').innerText = `Total: $${total.toLocaleString()}`;
-}
+    document.getElementById('time').innerText = `${elapsedTimeMinutes.toString().padStart(2, '0')}:${elapsedTimeSeconds.toString().padStart(2, '0')}`;
+  }
 
 x = 0;
 dir = 1.5
