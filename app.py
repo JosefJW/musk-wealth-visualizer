@@ -10,7 +10,7 @@ def home():
 def get_wealth_data():
     # Example data endpoint (optional)
     musk_wealth = 429200000000  # Elon Musk's wealth
-    unit_salary = 3400000         # Average yearly salary
+    unit_salary = 17000000/2         # Average yearly salary
     return jsonify({
         'total_wealth': musk_wealth,
         'unit_salary': unit_salary

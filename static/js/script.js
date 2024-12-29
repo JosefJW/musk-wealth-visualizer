@@ -7,12 +7,11 @@ let startTime = new Date();
 let curTime = new Date();
 let elapsedTime = 0;
 
-const blockSize = 2;
 const blocks = [];
 const collisionBlocks = [];
 let total = 0;
-let unitSalary; // Default average yearly salary
-let totalWealth; // Default Elon Musk's wealth
+let unitSalary = 17000000/2; // Default average yearly salary
+let totalWealth = 429200000000; // Default Elon Musk's wealth
 
 // Fetch wealth data from the backend
 fetch('/get_wealth_data')
@@ -20,8 +19,12 @@ fetch('/get_wealth_data')
   .then(data => {
     totalWealth = data.total_wealth;
     unitSalary = data.unit_salary;
-    blockSize = ((canvas.width-10) * (canvas.height-10)) / (totalWealth/unitSalary)
   });
+
+const totalBlocks = totalWealth / unitSalary;
+const totalArea = (canvas.width-100) * (canvas.height);
+const blockArea = totalArea / totalBlocks;
+const blockSize = Math.ceil(Math.sqrt(blockArea));
 
 class Block {
   constructor(x, y) {
@@ -144,7 +147,7 @@ dir = 1.5
 
 function spawnBlock() {
   if (total < totalWealth) {
-    if (x > 10*blockSize && x < canvas.width - 10*blockSize) {
+    if (x > 100 && x < canvas.width - 100) {
       newBlock = new Block(x, 0)
       blocks.push(newBlock);
       collisionBlocks.push(newBlock)
@@ -166,5 +169,5 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
-setInterval(spawnBlock, 0.1); // Spawn a block every 100ms
+setInterval(spawnBlock, 10); // Spawn a block every 10ms
 animate();
