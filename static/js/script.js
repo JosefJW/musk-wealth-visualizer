@@ -3,8 +3,9 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const blockSize = 3;
+const blockSize = 5;
 const blocks = [];
+const collisionBlocks = [];
 let total = 0;
 let unitSalary; // Default average yearly salary
 let totalWealth; // Default Elon Musk's wealth
@@ -68,9 +69,11 @@ class Block {
         }
 
         // Check for collision with other blocks
-        for (let block of blocks) {
+        for (let block of collisionBlocks) {
             if (block !== this && this.checkCollision(block)) {
-                this.resolveCollision(block);
+                this.isSettled = true;
+                this.y = block.y - blockSize;
+                collisionBlocks.splice(collisionBlocks.indexOf(block), 1)
             }
         }
     }
@@ -130,12 +133,15 @@ dir = 1.5
 
 function spawnBlock() {
   if (total < totalWealth) {
-    blocks.push(new Block(x, 0));
-    updateCounter();
+    if (x > 10*blockSize && x < canvas.width - 10*blockSize) {
+      newBlock = new Block(x, 0)
+      blocks.push(newBlock);
+      collisionBlocks.push(newBlock)
+      updateCounter();
+    }
     x += blockSize*dir;
     if (x > canvas.width || x < 0) {
         dir = -dir;
-        //x += blockSize*dir;
     }
   }
 }
@@ -149,5 +155,5 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
-setInterval(spawnBlock, 1); // Spawn a block every 100ms
+setInterval(spawnBlock, 0.1); // Spawn a block every 100ms
 animate();
