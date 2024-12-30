@@ -10,7 +10,7 @@ let elapsedTime = 0;
 const blocks = [];
 const collisionBlocks = [];
 let total = 0;
-let unitSalary = 17000000/2; // Default average yearly salary
+let unitSalary = 8500000; // Default average yearly salary
 let totalWealth = 429200000000; // Default Elon Musk's wealth
 
 // Fetch wealth data from the backend
@@ -22,9 +22,9 @@ fetch('/get_wealth_data')
   });
 
 const totalBlocks = totalWealth / unitSalary;
-const totalArea = (canvas.width-100) * (canvas.height);
+const totalArea = (canvas.width-100) * (canvas.height-100);
 const blockArea = totalArea / totalBlocks;
-const blockSize = Math.ceil(Math.sqrt(blockArea));
+const blockSize = Math.ceil(Math.sqrt(blockArea)/2);
 
 class Block {
   constructor(x, y) {
@@ -140,7 +140,15 @@ function updateCounter() {
     elapsedTimeMinutes = Math.floor(elapsedTime/60000);
     document.getElementById('counter').innerText = `Total: $${total.toLocaleString()}`;
     document.getElementById('time').innerText = `${elapsedTimeMinutes.toString().padStart(2, '0')}:${elapsedTimeSeconds.toString().padStart(2, '0')}`;
+  
+    updateStoryText();
   }
+
+function updateStoryText() {
+  if (total > 2000000000 && total < 50000000000) {
+    document.getElementById('story').innerText = "Each one of these squares is worth $8.5 million.";
+  }
+}
 
 x = 0;
 dir = 1.5
@@ -169,5 +177,5 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
-setInterval(spawnBlock, 10); // Spawn a block every 10ms
+setInterval(spawnBlock, 15); // Spawn a block every 10ms
 animate();
