@@ -220,7 +220,7 @@ function updateStoryText() {
     revertBlockColors(4200);
   }
   else if (mins < 5) {
-    document.getElementById('story').innerText = "Here's how much Musk's charity gave away in 2023 according to Forbes. This much was not even enough for them to meet the minimum IRS standards.";
+    document.getElementById('story').innerText = "Here's how much Musk's charity gave away in 2023 according to Forbes. Yes, just that little bit of red in the corner. This much was not even enough for them to meet the minimum IRS standards.";
     updateBlockColors(28);
   }
   else if (mins < 5.4) {
@@ -268,36 +268,51 @@ function updateStoryText() {
     document.getElementById('story').innerText = "Well, we still got a long ways to go to show Musk's wealth. I'll highlight important milestones we pass the rest of the way.";
   }
 
-
-
-
-  /*
-  if (total > 6000000000 && total < 7000000000) {
-    document.getElementById('story').innerText = "Based off the average annual salary and working years, the average American will only make about $3 million in their entire lifetime.";
+  if (total > 175000000000 && total < 176000000000) {
+    document.getElementById('story').innerText = "The GDP for the state of Maine in 2024";
+    updateBlockColors(11514)
   }
-  if (total > 15000000000 && total < 16000000000) {
-    document.getElementById('story').innerText = "It would take almost three people a lifetime of work to just get one of these squares.";
+  if (total > 190000000000 && total < 191000000000) {
+    document.getElementById('story').innerText = "Amount the USDA needed to spend on food assistance programs in 2023";
+    updateBlockColors(19576);
   }
-  if (total > 22000000000 && total < 23000000000) {
-    document.getElementById('story').innerText = "Elon has over 47,000 of these squares.";
+  if (total > 200000000000 && total < 201000000000) {
+    revertBlockColors(19576);
+    document.getElementById('story').innerText = "Global box office revenue in 2024";
+    updateBlockColors(3588)
   }
-  if (total > 30000000000 && total < 31000000000) {
-    document.getElementById('story').innerText = "Let's explore what you could do with just one of these squares.";
+  if (total > 215000000000 && total < 216000000000) {
+    document.getElementById('story').innerText = "The wealth of Costa Rica";
+    updateBlockColors(24824);
   }
-  if (total > 35000000000 && total < 36000000000) {
-    document.getElementById('story').innerText = "Every single one of these squares could buy multiple luxury yachts.";
+  if (total > 237500000000 && total < 238000000000) {
+    document.getElementById('story').innerText = "Jeff Bezos' net worth";
+    updateBlockColors(27941);
   }
-  if (total > 40000000000 && total < 41000000000) {
-    document.getElementById('story').innerText = "With just one of these, you could buy a house in Beverly Hills.";
+  if (total > 269000000000 && total < 270000000000) {
+    document.getElementById('story').innerText = "Coca-Cola market cap";
+    updateBlockColors(31647);
   }
-  if (total > 45000000000 && total < 46000000000) {
-    document.getElementById('story').innerText = "Every four of these squares could be a brand new school for our children to attend.";
+  if (total > 306000000000 && total < 307000000000) {
+    document.getElementById('story').innerText = "GDP of Finland 2024";
+    updateBlockColors(36000);
   }
-  if (total > 50000000000 && total < 51000000000) {
-    document.getElementById('story').innerText = "Each one of these could build multiple homeless shelters.";
+  if (total > 345000000000 && total < 346000000000) {
+    document.getElementById('story').innerText = "Estimated annual U.S. infrastructure investment needs";
+    updateBlockColors(40588);
   }
-  */
-
+  if (total > 375000000000 && total < 376000000000) {
+    document.getElementById('story').innerText = "Combined annual profit of Walmart, Target, Kroger, Home Depot, Best Buy, Lowe's, Burlington, and Alibaba in 2024.";
+    updateBlockColors(42353);
+  }
+  if (total > 401000000000 && total < 402000000000) {
+    document.getElementById('story').innerText = "GDP of Hong Kong in 2024";
+    updateBlockColors(47176);
+  }
+  if (total >= 429200000000) {
+    document.getElementById('story').innerText = "Elon Musk";
+    updateBlockColors(51000);
+  }
 }
 
 x = 0;
