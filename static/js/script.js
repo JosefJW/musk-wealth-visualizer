@@ -24,7 +24,7 @@ fetch('/get_wealth_data')
 const totalBlocks = totalWealth / unitSalary;
 const totalArea = (canvas.width-100) * (canvas.height-100);
 const blockArea = totalArea / totalBlocks;
-const blockSize = Math.ceil(Math.sqrt(blockArea)/2);
+const blockSize = Math.ceil(Math.sqrt(blockArea));
 
 class Block {
   constructor(x, y) {
