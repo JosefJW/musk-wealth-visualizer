@@ -13,14 +13,6 @@ let total = 0;
 let unitSalary = 8500000; // Default average yearly salary
 let totalWealth = 429200000000; // Default Elon Musk's wealth
 
-// Fetch wealth data from the backend
-fetch('/get_wealth_data')
-  .then(response => response.json())
-  .then(data => {
-    totalWealth = data.total_wealth;
-    unitSalary = data.unit_salary;
-  });
-
 const totalBlocks = totalWealth / unitSalary;
 const totalArea = (canvas.width-100) * (canvas.height-100);
 const blockArea = totalArea / totalBlocks;
